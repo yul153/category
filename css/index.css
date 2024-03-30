@@ -79,7 +79,6 @@ nav .logo {
 
 /* 유틸메뉴 */
 nav .icon {
-  /* border: 1px solid #000; */
   position: relative;
   display: flex;
   justify-content: flex-end;
@@ -91,7 +90,7 @@ nav .icon {
   z-index: 10;
 }
 
-.icon li a {
+.icon li {
   margin-right: 24px;
   color: #666;
 }
@@ -101,7 +100,7 @@ nav .icon {
   bottom: 0;
   left: 0;
   width: 230px;
-  height: 18px;
+  height: 20px;
   border-width: 0 0 1px 0;
   border-style: solid;
   border-color: #666;
@@ -113,11 +112,17 @@ nav .icon {
   bottom: 0;
   left: 0;
   width: 195px;
-  height: 30px;
+  height: inherit;
+  font-size: 14px;
   background-color: transparent;
   border: none;
   outline: none;
 }
+
+.searchIcon {
+  z-index: 9999;
+}
+
 
 /* 탑메뉴 */
 .gnb {
@@ -158,7 +163,7 @@ nav .icon {
   left: 50%;
   transform: translateX(-50%);
   width: 1200px;
-  height: 300px;
+  height: 280px;
   cursor: pointer;
 }
 
@@ -196,7 +201,7 @@ nav .icon {
   left: 50%;
   transform: translate(-50%);
   width: 700px;
-  height: 300px;
+  height: 280px;
   padding: 30px 30px;
   box-sizing: border-box;
 }
@@ -236,7 +241,7 @@ nav .icon {
 
 .sub_category>ul>li {
   /* border: 1px solid #000; */
-  width: 120px;
+  width: 130px;
   height: 36px;
 
 }
@@ -262,7 +267,7 @@ nav .icon {
   top: 100%;
   left: 0;
   width: 100%;
-  height: 300px;
+  height: 280px;
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   z-index: 9;
@@ -479,7 +484,7 @@ section .material-symbols-outlined {
   height: 600px;
 }
 
-.solution_category a span {
+.solution_category li a {
   position: absolute;
   display: inline-block;
   height: 40px;
@@ -493,39 +498,39 @@ section .material-symbols-outlined {
 }
 
 /* 솔루션 버튼 */
-.solution_category a:first-child span {
+.solution_category li:first-child a {
   top: 0;
   left: 45%;
 }
 
-.solution_category a:nth-child(2) span {
+.solution_category li:nth-child(2) a {
   top: 30%;
   left: 10%;
 }
 
-.solution_category a:nth-child(3) span {
+.solution_category li:nth-child(3) a {
   top: 15%;
   left: 60%;
 }
 
-.solution_category a:nth-child(4) span {
+.solution_category li:nth-child(4) a {
   top: 60%;
   left: 60%;
 }
 
-.solution_category a:nth-child(5) span {
+.solution_category li:nth-child(5) a {
   top: 45%;
   left: 36%;
 }
 
-.solution_category a:nth-child(6) span {
+.solution_category li:nth-child(6) a {
   top: 70%;
   left: 15%;
 }
 
 
 /* 솔루션 버튼 옆 border */
-.solution_category a span::before {
+.solution_category li a::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -536,28 +541,27 @@ section .material-symbols-outlined {
   transition: 0.35s ease-in-out;
 }
 
-.solution_category a:first-child span::before {
+.solution_category li:first-child a::before {
   width: 350px;
-
 }
 
-.solution_category a:nth-child(2) span:before {
+.solution_category li:nth-child(2) a:before {
   width: 550px;
 }
 
-.solution_category a:nth-child(3) span:before {
+.solution_category li:nth-child(3) a:before {
   width: 250px;
 }
 
-.solution_category a:nth-child(4) span:before {
+.solution_category li:nth-child(4) a:before {
   width: 160px;
 }
 
-.solution_category a:nth-child(5) span:before {
+.solution_category li:nth-child(5) a:before {
   width: 380px;
 }
 
-.solution_category a:nth-child(6) span:before {
+.solution_category li:nth-child(6) a:before {
   width: 500px;
 }
 
@@ -565,30 +569,33 @@ section .material-symbols-outlined {
 .solution_image {
   position: relative;
   left: -50px;
-  display: flex;
-  justify-content: center;
-  float: right;
   height: 700px;
   width: 550px;
   overflow: hidden;
   object-fit: cover;
-  transition: 0.5s;
   z-index: 1;
 }
 
+.solution_image>ul {
+  display: flex;
+}
+
+.solution_image>ul>li {
+  transition: 0.5s;
+}
+
 /* 솔루션 호버 */
-.solution_category a:hover span {
+.solution_category li:hover a {
   background-color: #62D59E;
   border: none;
   color: #fff;
 }
 
-.solution_category a:hover span:before {
+.solution_category li:hover a:before {
   background-color: #62D59E;
 }
 
-
-.solution_category a:hover span::before {
+.solution_category li:hover a::before {
   opacity: 1;
 }
 
@@ -939,13 +946,14 @@ footer {
   top: 45%;
   left: 0;
   width: 700px;
+  font-size: 14px;
   color: #aaa;
-  line-height: 24px;
+  line-height: 22px;
 }
 
 .right_text {
   /* border: 1px solid #000; */
-  padding: 20px;
+  padding: 20px 20px 40px 20px;
 }
 
 .right_text span {
@@ -959,8 +967,8 @@ footer {
 }
 
 .right_text p {
-  margin: 15px 0;
-  font-size: 18px;
+  margin: 10px 0;
+  font-size: 16px;
   color: #fff;
   line-height: 26px;
 }

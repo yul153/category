@@ -68,7 +68,7 @@
                   </div>
                 </div>
                 <div class="sub_category_menu subCtMn2" id="tab2">
-                  <div class="sub_cat">
+                  <div class="sub_category">
                     <ul>
                       <li><a href="#none">트러블/시카</a></li>
                       <li><a href="#none">민감/건조/속당김</a></li>
@@ -132,10 +132,10 @@
           <li class="topMenu"><a href="#community">community</a></li>
         </ul>
         <ul class="icon">
-          <li> 
-            <input type="search" id="sc" name="sc">
+          <li class="srch"> 
+            <input type="search" id="sc" name="sc" placeholder="검색어를 입력해주세요.">
           </li>
-          <li><a href="#none"><span class="material-symbols-outlined search1">search</span></a></li>
+          <li class="searchIcon"><a href="#none"><span class="material-symbols-outlined search1">search</span></a></li>
           <li><a href="#none"><span class="material-symbols-outlined">person</span></a></li>
           <li><a href="#none"><span class="material-symbols-outlined">shopping_cart</span></a></li>
         </ul>
@@ -217,23 +217,23 @@
             <h3>Winter Skin Problem Solutions</h3>
             <p>찬바람 부는 겨울철 피부 고민 안성맞춤 추천템!</p> 
           </div>
-          <div class="solution_category">
-              <a href="#none"><span>속건성</span></a>
-              <a href="#none"><span>장벽케어</span></a>
-              <a href="#none"><span>각질관리</span></a>
-              <a href="#none"><span>건조&민감피부</span></a>
-              <a href="#none"><span>붉은톤</span></a>
-              <a href="#none"><span>주름개선&탄력</span></a>
-          </div>
+          <ul class="solution_category">
+              <li class="active"><a href="#none" data-img="#s1">속건성</a></li>
+              <li><a href="#none" data-img="#s2">장벽케어</a></li>
+              <li><a href="#none" data-img="#s3">각질관리</a></li>
+              <li><a href="#none" data-img="#s4">건조&민감피부</a></li>
+              <li><a href="#none" data-img="#s5">붉은톤</a></li>
+              <li><a href="#none" data-img="#s6">주름개선&탄력</a></li>
+          </ul>
         </div>
         <div class="solution_image">
           <ul>
-            <li><a href="#none"><img src="image/solution1_dry.png" alt=""></a></li>
-            <li><a href="#none"><img src="image/solution2_barriarCare.jpg" alt=""></a></li>
-            <li><a href="#none"><img src="image/solution3_dead_SkinCare.png" alt=""></a></li>
-            <li><a href="#none"><img src="image/solution4_dry&secsitiveSkin.png" alt=""></a></li>
-            <li><a href="#none"><img src="image/solution5_redTone.jpg" alt=""></a></li>
-            <li><a href="#none"><img src="image/solution6_wrinkleElasticity.png" alt=""></a></li>
+            <li id="s1"><img src="image/solution1_dry.png" alt=""></li>
+            <li id="s2"><img src="image/solution2_barriarCare.jpg" alt=""></li>
+            <li id="s3"><img src="image/solution3_dead_SkinCare.png" alt=""></li>
+            <li id="s4"><img src="image/solution4_dry&secsitiveSkin.png" alt=""></li>
+            <li id="s5"><img src="image/solution5_redTone.jpg" alt=""></li>
+            <li id="s6"><img src="image/solution6_wrinkleElasticity.png" alt=""></li>
           </ul>
         </div>
       </div>

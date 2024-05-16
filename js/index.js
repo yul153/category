@@ -1,6 +1,5 @@
 $(document).ready(function () {
   /* 서브메뉴*/
-  // 서브메뉴 오버
   $(".topMenuP").hover(function () {
     $(this).find(".p_sub_menu").stop().slideDown();
     $(".sub_bgbox").stop().slideDown();
@@ -9,7 +8,6 @@ $(document).ready(function () {
     $(".sub_bgbox").stop().slideUp();
   });
 
-  // 서브메뉴 카테고리별 클릭
   $(".subMenuTitle li a").click(function () {
     $(this).addClass("active");
     $(this).siblings().removeClass("active");
@@ -29,35 +27,18 @@ $(document).ready(function () {
     $(".subCtMn3").show();
   });
 
-  // 검색창 호버
-  /*   let src = true;
-    $(".search1").click(function () {
-      $(".srch").show();
-      if (src) {
-        $(".srch").stop().animate({ "right": "195px" }, 500, "easeOutBack");
-        src = false;
-      } else {
-        $(".srch").stop().animate({ "right": "0px" }, 200);
-        src = true;
-      }
-    }, function () {
-      $(".srch").hide();
-    }
-    ); */
-
 
   /* 메인 슬라이드 */
   let $simg = $(".slide ul");
   let $simgli = $(".slide ul li");
-  let $sbtn = $(".slide_btn ul li");
-  let $snext = $(".slide_side_btn .nex");
-  let $spre = $(".slide_side_btn .pre");
+  let $sbtn = $(".slide_indicator ul li");
+  let $snext = $(".slide_prenex_btn .next");
+  let $spre = $(".slide_prenex_btn .prev");
   let simg_w = $simgli.width();
   let simg_n = $simgli.length;
   let soldidx = 0;
   let sindex = 0;
 
-  //index번째 비주얼이미지 이동하는 함수생성
   function slideImg(sindex) {
     targetX = -(sindex * simg_w)
     $simg.stop().animate({ left: targetX }, 600);
@@ -66,7 +47,6 @@ $(document).ready(function () {
     soldidx = sindex;
   };
 
-  //자동함수 생성
   function slideAuto() {
     sindex++;
     if (sindex == simg_n) {
@@ -76,41 +56,65 @@ $(document).ready(function () {
   };
   auto = setInterval(slideAuto, 4000);
 
-  //하단버튼
+  //인디케이터
   $sbtn.click(function () {
     clearInterval(auto);
     $(".play").hide();
-    $(".stop").show();
+    $(".pause").show();
     sindex = $(this).index();
     slideImg(sindex);
     auto = setInterval(slideAuto, 4000);
   });
 
+  // 좌우버튼
+  $spre.click(function () {
+    clearInterval(auto);
+    $(".play").hide();
+    $(".pause").show();
+    sindex--;
+    if (sindex < 0) {
+      sindex = simg_n - 1;
+    }
+    slideImg(sindex);
+    auto = setInterval(slideAuto, 4000);
+  });
 
+  $snext.click(function () {
+    clearInterval(auto);
+    $(".play").hide();
+    $(".pause").show();
+    sindex++;
+    if (sindex == simg_n) {
+      sindex = 0;
+    }
+    slideImg(sindex);
+    auto = setInterval(slideAuto, 4000);
+  });
 
-  /* 솔루션이미지 */
-  let banner_s = $(".solution_image ul li").width();
+  // 재생/정지 버튼
+  $(".slide_plst_btn .play").hide();
 
-  $(".solution_image ul li:last").prependTo(".solution_image ul");
-  $(".bsolution_image ul").css({ left: -banner_s });
+  $(".slide_plst_btn .play").click(function () {
+    auto = setInterval(slideAuto, 4000);
+    $(".play").hide();
+    $(".pause").show();
+  });
 
-  //자동으로 슬라이드 함수 생성
-  function sbannerAuto() {
-    $(".solution_image ul").stop().animate({ left: "-=" + banner_s + "px" }, 500, function () {
-      $(".solution_image ul li:first-child").appendTo(".solution_image ul");
-      $(this).css({ left: -banner_s });
-    });
-  };
-  let sauto = setInterval(sbannerAuto, 3000);
-
-  //마우스를 올리면 슬라이드 자동함수 멈추고, 마우스를 내리면 다시 자동함수 실행
-  $(".solution_image").hover(function () {
-    clearInterval(sauto);
-  }, function () {
-    sauto = setInterval(sbannerAuto, 3000);
+  $(".slide_plst_btn .pause").click(function () {
+    clearInterval(auto);
+    $(".pause").hide();
+    $(".play").show();
   });
 
 
+
+  /* 솔루션이미지 */
+  $(".solution_category li").click(function () {
+    $(this).addClass("active");
+    $(this).siblings().removeClass("active");
+    $(".solution_image ul li").removeClass("active");
+    $("#" + $(this).find("a").attr("data-img")).addClass("active");
+  });
 
 
 
@@ -120,7 +124,6 @@ $(document).ready(function () {
   $(".best1 ul li:last").prependTo(".best1 ul");
   $(".best1 ul").css({ left: -banner_b });
 
-  //자동으로 슬라이드 함수 생성
   function bannerAuto() {
     $(".best1 ul").stop().animate({ left: "-=" + banner_b + "px" }, 500, function () {
       $(".best1 ul li:first-child").appendTo(".best1 ul");
@@ -129,10 +132,22 @@ $(document).ready(function () {
   };
   let bauto = setInterval(bannerAuto, 3000);
 
-  //마우스를 올리면 슬라이드 자동함수 멈추고, 마우스를 내리면 다시 자동함수 실행
   $(".best1").hover(function () {
     clearInterval(bauto);
   }, function () {
     bauto = setInterval(bannerAuto, 3000);
   });
+
+
+  /* 탑버튼 상단 안보이게 */
+  $(window).scroll(function () {
+    let position = $(window).scrollTop();
+
+    if (position > 200) {
+      $(".top").addClass("active");
+    } else {
+      $(".top").removeClass("active");
+    }
+  });
+
 });
